@@ -1,21 +1,20 @@
-
-print('Шифр Цезаря')
-alphabet ='АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-while True:
-    string = input('Введите текст:   ')
-    if string == '0':
-        break
-    decision = int(input('Введите 1 для зашифровки, -1 для расшифровки:   '))
-    n = int(input('Введите шаг смещения:    '))
-    output = ''
-    for i in range(len(string)):
-        try:
-            index = alphabet.index(string[i])
-            output += alphabet[(index+n*decision)%33]
-        except ValueError:
-                try:
-                    index = b_alphabet.index(string[i])
-                    output += b_alphabet[(index+n*decision)%33]
-                except ValueError:
-                    output += string[i]
-    print(output)
+array = ['а','б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы','ь', 'э', 'ю', 'я',]
+string = str (input('с маленькой буквы введите текст '))
+d = len(string)
+sdvig = int(input('введите значение сдвига от -15 до 15 '))
+if sdvig>15 or sdvig<-15:
+    exit(0)
+newstring = ''
+for i in range (d):
+    for k in range (31):
+        if string == '':
+            newstring += ''
+            break
+        elif string[i] == array[k]:
+            if k + sdvig > 30:
+                newstring += array[29 - k + sdvig]
+            else:
+                newstring += array[k + sdvig]
+            break
+print(newstring)    
+    
