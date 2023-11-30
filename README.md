@@ -3,5 +3,6 @@
 ## Среда разработки
 Программу можно открыть в любой IDE для Python. Я делал программу в VSCode
 ## Тесты
-![image](https://github.com/Dmitrij228Ismailov/LAb5/assets/146659406/780c0967-5c74-4d8b-a70e-c20c97fdc5e0)
+![image](https://github.com/Dmitrij228Ismailov/LAb5/assets/146659406/bc5e759e-50b1-4bd1-8f6d-8c79a3288e69)
+
 
