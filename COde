@@ -1,20 +1,32 @@
-array = ['а','б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы','ь', 'э', 'ю', 'я',]
-string = str (input('с маленькой буквы введите текст '))
-d = len(string)
-sdvig = int(input('введите значение сдвига от -15 до 15 '))
-if sdvig>15 or sdvig<-15:
-    exit(0)
-newstring = ''
-for i in range (d):
-    for k in range (31):
-        if string == '':
-            newstring += ''
-            break
-        elif string[i] == array[k]:
-            if k + sdvig > 30:
-                newstring += array[29 - k + sdvig]
-            else:
-                newstring += array[k + sdvig]
-            break
-print(newstring)    
-    
+def caesar_encrypt(text, shift):
+    alphabet_lower_eng = 'abcdefghijklmnopqrstuvwxyz'
+    alphabet_upper_eng = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    alphabet_lower_rus = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    alphabet_upper_rus = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+    result = ''
+
+    for char in text:
+        if char in alphabet_lower_rus:
+            index = (alphabet_lower_rus.index(char) + shift) % len(alphabet_lower_rus)
+            result += alphabet_lower_rus[index]
+        elif char in alphabet_upper_rus:
+            index = (alphabet_upper_rus.index(char) + shift) % len(alphabet_upper_rus)
+            result += alphabet_upper_rus[index]
+        elif char in alphabet_lower_eng:
+            index = (alphabet_lower_eng.index(char) + shift) % len(alphabet_lower_eng)
+            result += alphabet_lower_eng[index]
+        elif char in alphabet_upper_eng:
+            index = (alphabet_upper_eng.index(char) + shift) % len(alphabet_upper_eng)
+            result += alphabet_upper_eng[index]
+        else:
+            result += char
+    return result
+
+text = input('Введите строку (русскими или английскими буквами): ')
+while True:
+    try:
+        shift = int(input('Введите шаг сдвига: '))
+        print(caesar_encrypt(text, shift))
+        break
+    except ValueError:
+        print('Ошибка ввода')
